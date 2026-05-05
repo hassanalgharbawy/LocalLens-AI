@@ -1,0 +1,502 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  color: #172033;
+  background: #eef3ff;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(73, 105, 255, 0.23), transparent 34rem),
+    radial-gradient(circle at top right, rgba(0, 208, 172, 0.18), transparent 30rem),
+    linear-gradient(135deg, #f8fbff 0%, #edf3ff 55%, #eef7f6 100%);
+}
+
+button, input {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.58;
+}
+
+main {
+  width: min(1600px, calc(100% - 28px));
+  margin: 0 auto;
+  padding: 18px 0 28px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.55fr);
+  gap: 18px;
+  align-items: stretch;
+  margin-bottom: 18px;
+}
+
+.heroText, .heroCard, .panel, .workspace > section {
+  border: 1px solid rgba(89, 106, 145, 0.15);
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 20px 60px rgba(34, 50, 95, 0.1);
+  backdrop-filter: blur(18px);
+  border-radius: 24px;
+}
+
+.heroText {
+  padding: 28px;
+}
+
+.pill {
+  display: inline-flex;
+  width: fit-content;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #172033;
+  color: white;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.01em;
+}
+
+h1 {
+  margin: 14px 0 10px;
+  font-size: clamp(42px, 5vw, 72px);
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+}
+
+.heroText p {
+  max-width: 780px;
+  margin: 0;
+  color: #56627a;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.searchBar {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 8px;
+  border-radius: 18px;
+  background: #f3f6ff;
+  border: 1px solid #e1e7f7;
+}
+
+.searchBar input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  padding: 0 14px;
+  color: #172033;
+  font-size: 15px;
+}
+
+.searchBar button, .dropzone button, .docActions button, .ghost {
+  color: white;
+  background: linear-gradient(135deg, #335cff, #172033);
+  border-radius: 14px;
+  padding: 11px 16px;
+  font-weight: 800;
+  box-shadow: 0 10px 24px rgba(51, 92, 255, 0.22);
+}
+
+.heroCard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 16px;
+}
+
+.stat {
+  min-height: 100px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #ffffff, #f2f6ff);
+  border: 1px solid #e5eafb;
+}
+
+.stat strong {
+  font-size: 30px;
+  letter-spacing: -0.05em;
+}
+
+.stat span {
+  color: #6a748b;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 420px minmax(0, 920px);
+  gap: 18px;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.panel {
+  padding: 16px;
+  position: relative;
+  overflow: visible;
+}
+
+.panelHeader, .sectionTitle, .resultTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.panelHeader h2, .sectionTitle span {
+  margin: 0;
+  font-size: 20px;
+  letter-spacing: -0.03em;
+  font-weight: 900;
+}
+
+.panelHeader p, .sectionTitle small {
+  margin: 4px 0 0;
+  color: #707b91;
+  font-size: 13px;
+}
+
+.ghost {
+  color: #24304a;
+  background: #eef3ff;
+  box-shadow: none;
+  border: 1px solid #dfe6f7;
+  white-space: nowrap;
+}
+
+.dropzone {
+  position: relative;
+  display: grid;
+  gap: 8px;
+  place-items: center;
+  text-align: center;
+  margin: 16px 0;
+  padding: 20px;
+  border: 2px dashed #cad6ee;
+  border-radius: 20px;
+  background: #f8fbff;
+  transition: 0.18s ease;
+}
+
+.dropzone.dragging {
+  border-color: #335cff;
+  background: #eef3ff;
+  transform: translateY(-2px);
+}
+
+.dropIcon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: #172033;
+  color: white;
+  font-weight: 900;
+  font-size: 22px;
+}
+
+.dropzone span {
+  color: #6b7285;
+  font-size: 13px;
+}
+
+.dropzone input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 12px;
+  background: white;
+  border: 1px solid #dde5f6;
+}
+
+.docList {
+  display: grid;
+  gap: 10px;
+}
+
+.doc {
+  padding: 14px;
+  border-radius: 18px;
+  background: #f9fbff;
+  border: 1px solid #e3e9f7;
+  cursor: pointer;
+  transition: 0.18s ease;
+}
+
+.doc:hover, .doc.active {
+  transform: translateY(-2px);
+  border-color: #8fa5ff;
+  box-shadow: 0 12px 30px rgba(42, 65, 132, 0.08);
+}
+
+.doc h3 {
+  margin: 0 0 6px;
+  font-size: 15px;
+}
+
+.doc p {
+  margin: 0 0 8px;
+  color: #657189;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.doc span {
+  color: #7a8499;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: capitalize;
+}
+
+.docActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.docActions button {
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-size: 11px;
+  box-shadow: none;
+}
+
+.docActions .danger {
+  background: #ffecef;
+  color: #b4233a;
+}
+
+.workspace {
+  display: grid;
+  gap: 16px;
+  align-content: stretch;
+}
+
+.answerCard, .results {
+  padding: 18px;
+}
+
+.answerCard p {
+  color: #38445c;
+  line-height: 1.6;
+}
+
+.summaryList {
+  margin: 14px 0;
+  padding-left: 20px;
+  color: #38445c;
+  line-height: 1.55;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tags span {
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: #eef3ff;
+  color: #3349a1;
+  font-weight: 800;
+  font-size: 12px;
+}
+
+.results {
+  min-height: 620px;
+  display: flex;
+  flex-direction: column;
+}
+
+.resultCard, .quizCard, .empty {
+  margin-top: 14px;
+  padding: 16px;
+  border-radius: 18px;
+  background: #fbfcff;
+  border: 1px solid #e4e9f7;
+}
+
+.resultCard h3 {
+  margin: 0;
+  font-size: 17px;
+}
+
+.resultCard span {
+  display: block;
+  margin-top: 4px;
+  color: #737e93;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.score {
+  display: grid;
+  place-items: center;
+  min-width: 58px;
+  height: 40px;
+  border-radius: 12px;
+  color: #0d6d57;
+  background: #e9fff9;
+  font-weight: 950;
+}
+
+.meter {
+  overflow: hidden;
+  height: 8px;
+  margin: 12px 0;
+  border-radius: 999px;
+  background: #e8eefb;
+}
+
+.meter div {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #335cff, #00c7a5);
+}
+
+.resultCard p, .fullText {
+  color: #354158;
+  line-height: 1.62;
+}
+
+.fullText {
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 14px;
+  background: #f0f5ff;
+  border: 1px solid #dfe7fb;
+}
+
+mark {
+  padding: 1px 4px;
+  border-radius: 6px;
+  background: #fff2a8;
+  color: #172033;
+}
+
+.quizList {
+  display: grid;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.quizCard h3 {
+  margin: 0 0 12px;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.options button {
+  padding: 11px;
+  border-radius: 12px;
+  text-align: left;
+  color: #26324a;
+  background: #eef3ff;
+  border: 1px solid #dce5f8;
+  font-weight: 800;
+}
+
+.options button.correct {
+  background: #ddfff5;
+  border-color: #62d7b8;
+  color: #08624f;
+}
+
+.options button.wrong {
+  background: #fff0f2;
+  border-color: #ff9dae;
+  color: #9f1d32;
+}
+
+.empty {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  min-height: 480px;
+  color: #626d84;
+}
+
+.empty h2 {
+  margin: 0 0 10px;
+  color: #172033;
+  font-size: 30px;
+}
+
+.empty p {
+  margin: 0;
+  max-width: 520px;
+  line-height: 1.6;
+}
+
+.error {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  color: #9f1d32;
+  background: #fff0f2;
+  font-weight: 800;
+}
+
+@media (max-width: 1100px) {
+  .hero, .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .panel {
+    position: static;
+    max-height: none;
+  }
+}
+
+@media (max-width: 640px) {
+  main {
+    width: min(100% - 16px, 1600px);
+    padding-top: 10px;
+  }
+
+  .heroText {
+    padding: 22px;
+  }
+
+  .searchBar, .panelHeader, .sectionTitle, .resultTop {
+    flex-direction: column;
+  }
+
+  .searchBar button {
+    width: 100%;
+  }
+
+  .heroCard, .options {
+    grid-template-columns: 1fr;
+  }
+}
